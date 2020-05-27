@@ -3,7 +3,7 @@ import './SearchBar.css'
 
 
 class SearchBar extends React.Component {
-
+ // é um stateful component pois possui a proprieadade state
     constructor(props) {
         super(props)
         this.state = {
@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
             location: '',
             sortBy: 'best_match'
         }
-
+// elementos que aparecem como filtro da pesquisa
         this.sortByOptions = {
             'Best Match': 'best_match',
             'Highest Rated': 'rating',
@@ -20,15 +20,17 @@ class SearchBar extends React.Component {
 
     }
 
+    // se a opção escolhida for a opção que está no state, retorna ativado.
     getSortByClass(sortByOption) {
         if (sortByOption === this.state.sortBy) return 'active'
         return ''
     }
 
+    // função que modifica o estado do filtro
     handleSortByChange(sortByOption) {
         this.setState({ sortBy: sortByOption })
     }
-
+ // lida com a mudança do estado do filtro com o click -> entende melhor
     renderSortByOptions() {
         Object.keys(this.sortByOptions).map(sortByOption => {
             let sortByOptionValue = this.sortByOptions[sortByOption];

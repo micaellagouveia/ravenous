@@ -1,6 +1,8 @@
 import React from 'react';
 import './Business.css';
 
+// no retorno vemos que há as props q foram descritas no App.js
+// this.props.business remete ao objeto que foi passado para o atributo business -> business={business}
 class Business extends React.Component {
   render() {
     return (

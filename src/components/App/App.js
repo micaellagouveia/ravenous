@@ -21,12 +21,17 @@ const businesses = [business, business, business, business, business, business]
 
 // No método render vai ser retornado um componente BusinessList que recebe um atributo q possui a lista de business
 export default class App extends React.Component {
+  searchYelp(term, location, sortBy){
+    console.log(`You are searching for ${term}, ${location} and ${sortBy}` )
+
+  }
   render() {
     return (
       <div className="App">
         <h1>Ravenous</h1>
-        <BusinessList businesses={businesses} /> 
         <SearchBar />
+        <BusinessList businesses={businesses} /> 
+        
       </div>
     );
   }

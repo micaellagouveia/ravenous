@@ -1,9 +1,8 @@
 import React from 'react'
 import './SearchBar.css'
 
-
 class SearchBar extends React.Component {
- // é um stateful component pois possui a proprieadade state
+    // é um stateful component pois possui a proprieadade state
     constructor(props) {
         super(props)
         this.state = {
@@ -11,12 +10,15 @@ class SearchBar extends React.Component {
             location: '',
             sortBy: 'best_match'
         }
-// elementos que aparecem como filtro da pesquisa
+        // elementos que aparecem como filtro da pesquisa
         this.sortByOptions = {
             'Best Match': 'best_match',
             'Highest Rated': 'rating',
             'Most Reviewed': 'review_count'
         }
+
+        this.handleTermChange = this.handleTermChange.bind(this)
+        this.handleLocationChange = this.handleLocationChange.bind(this)
 
     }
 
@@ -30,7 +32,16 @@ class SearchBar extends React.Component {
     handleSortByChange(sortByOption) {
         this.setState({ sortBy: sortByOption })
     }
- // lida com a mudança do estado do filtro com o click -> entende melhor
+
+    handleTermChange(event) {
+        this.setState({term: event.target.value})
+    }
+
+    handleLocationChange(event) {
+        this.setState({location: event.target.value})
+    }
+
+    // lida com a mudança do estado do filtro com o click -> entende melhor
     renderSortByOptions() {
         Object.keys(this.sortByOptions).map(sortByOption => {
             let sortByOptionValue = this.sortByOptions[sortByOption];
@@ -48,8 +59,8 @@ class SearchBar extends React.Component {
                     </ul>
                 </div>
                 <div className="SearchBar-fields">
-                    <input placeholder="Search Businesses" />
-                    <input placeholder="Where?" />
+                    <input placeholder="Search Businesses" onChange={this.handleTermChange}/>
+                    <input placeholder="Where?" onChange={this.handleLocationChange}/>
                 </div>
                 <div className="SearchBar-submit">
                     <a>Let's Go</a>
